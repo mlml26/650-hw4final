@@ -1,5 +1,5 @@
 #include "query_funcs.h"
-
+#include <iomanip>
 
 void add_player(connection *C, int team_id, int jersey_num, string first_name, string last_name,
                 int mpg, int ppg, int rpg, int apg, double spg, double bpg){
@@ -105,7 +105,7 @@ void query1(connection *C,
     if(it == R.begin()) {
       cout << "PLAYER_ID TEAM_ID UNIFORM_NUM FIRST_NAME LAST_NAME MPG PPG RPG APG SPG BPG"<<endl;
     }
-    cout << it[0].as<int>() << " " << it[1].as<int>() << " " << it[2].as<int>() << " "  << it[3].as<string>() << " "  << it[4].as<string>() << " " << it[5].as<int>() << " " << it[6].as<int>() << " " << it[7].as<int>() << " " << it[8].as<int>() << " " << it[9].as<double>() << " " << it[10].as<double>()<< endl;
+    cout << it[0].as<int>() << " " << it[1].as<int>() << " " << it[2].as<int>() << " "  << it[3].as<string>() << " "  << it[4].as<string>() << " " << it[5].as<int>() << " " << it[6].as<int>() << " " << it[7].as<int>() << " " << it[8].as<int>() << " " << fixed << setprecision(1) << it[9].as<double>() << " " << it[10].as<double>()<< endl;
   }
 }
 
@@ -124,7 +124,7 @@ void query2(connection *C, string team_color) {
   //list down all the record
   for(auto it = R.begin(); it != R.end(); ++it) {
     if(it == R.begin()) {
-      cout << "Team name: "<<endl;
+      cout << "NAME"<<endl;
     }
     cout << it[0].as<string>() << endl;
   }
@@ -144,7 +144,7 @@ void query3(connection *C, string team_name)
   //list down all the record
   for(auto it = R.begin(); it != R.end(); ++it) {
     if(it == R.begin()) {
-      cout << "First_name, Last_name: "<<endl;
+      cout << "FIRST_NAME LAST_NAME"<<endl;
     }
     cout << it[0].as<string>() << " " << it[1].as<string>() << endl;
   }
@@ -164,9 +164,9 @@ void query4(connection *C, string team_state, string team_color)
   //list down all the record
   for(auto it = R.begin(); it != R.end(); ++it) {
     if(it == R.begin()) {
-      cout << "First_name, Last_name, Jersey_number: "<<endl;
+      cout << "UNIFORM_NUM FIRST_NAME LAST_NAME"<<endl;
     }
-    cout << it[0].as<string>() << " " << it[1].as<string>() << " " << it[2].as<int>() << endl;
+    cout << it[2].as<string>() << " " << it[1].as<string>() << " " << it[0].as<int>() << endl;
   }
 }
 
@@ -184,7 +184,7 @@ void query5(connection *C, int num_wins)
   //list down all the record                                                                          
   for(auto it = R.begin(); it != R.end(); ++it) {
     if(it == R.begin()) {
-      cout << "First_name, Last_name, Team_name, Wins"<<endl;
+      cout << "FIRST_NAME LAST_NAME NAME WINS"<<endl;
     }
     cout << it[0].as<string>() << " " << it[1].as<string>() << " " << it[2].as<string>() << " " << it[3].as<int>() << endl;
   }

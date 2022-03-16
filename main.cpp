@@ -114,8 +114,8 @@ void addPlayer(connection * C, string File) {
     cin >> apg;	
     cin >> spg;
     cin >> bpg;	
-    cout << "spg="<< spg << endl;
-    cout << "bpg="<< bpg << endl;
+    //    cout << "spg="<< spg << endl;
+    //cout << "bpg="<< bpg << endl;
     add_player(C, team_id, jersey_num, first_name, last_name, mpg, ppg, rpg, apg, spg, bpg);
   }
   ifs.close();
@@ -129,9 +129,9 @@ int main (int argc, char *argv[])
   try{
     //Establish a connection to the database
     //Parameters: database name, user name, user password
-    C = new connection("dbname=acc_bball user=postgres password=passw0rd");
+    C = new connection("dbname=ACC_BBALL user=postgres password=passw0rd");
     if (C->is_open()) {
-      cout << "Opened database successfully: " << C->dbname() << endl;
+      //cout << "Opened database successfully: " << C->dbname() << endl;
     } else {
       cout << "Can't open database" << endl;
       return 1;
